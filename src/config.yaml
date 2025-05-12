@@ -1,0 +1,99 @@
+# This is a  configuration file or config.yaml
+# It is used to set up the environment for the application and to define the parameters
+# === environment section ===
+database_path: './data/bmarket.db'
+initial_dataset_csv_file_path: './data/bmarket.csv'
+dataset_csv_file_path: './data/eda_completed.csv'
+# === column section ===
+ID_column: Client ID
+classification_target: Subscription Status
+# ==== Selection of tunning performance : 1=Fast, 2=Slow ====
+classification_tuning_performance_set_optimum: 1
+# === column with data type correction needed ===
+data_type_correction: Age
+# === numerical_features ===
+numerical_features:
+- Age
+- Campaign Calls
+- Previous Contact Days
+# === categorical features ===
+categorical_features:
+- Occupation
+- Marital Status
+- Education Level
+- Credit Default
+- Housing Loan
+- Personal Loan
+- Contact Method
+# === threshold_for IQR removal ===
+threshold_for_outlier_removal:
+  Age: 1.5
+  Campaign Calls: 1.5
+  Previous Contact Days: 0
+# === model numerical features ===
+model_numerical_features:
+- Campaign Calls
+# === model categorical features ===
+model_categorical_features:
+- Age Group
+- Credit Default
+- Education Group
+- Marital Status
+- Occupation Group
+- On Loan
+- Previous Contact
+# === Education section ===
+Education_Group:
+  Primary: ['illiterate', 'basic.4y', 'basic.6y']
+  Secondary: ['basic.9y', 'high.school']
+  Tertiary: ['professional.course', 'university.degree']
+# === Occupation section ===
+Occupation_Group:
+  Blue_Collar: ['blue-collar', 'technician', 'services']
+  White_Collar: ['admin.', 'entrepreneur', 'management', 'self-employed']
+  Grey_Collar: ['housemaid', 'unemployed', 'student', 'retired']
+# ==== The following models are selectable ====
+classification_models:
+- LogisticRegression
+- KNeighborsClassifier
+- RandomForestClassifier
+- SVC
+- GradientBoostingClassifier
+# ==== classification_metrics ====
+classification_metrics:
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+# ==== fast or less hyperparameters used ====
+classification_hyperparameters_fast:
+  LogisticRegression:
+    classifier__C: [0.1, 1.0]
+  KNeighborsClassifier:
+    classifier__n_neighbors: [3, 5]
+  RandomForestClassifier:
+    classifier__n_estimators: [100, 200]
+    classifier__max_depth: [null, 10]
+  SVC:
+    classifier__C: [0.1, 1.0]
+    classifier__kernel: ['linear', 'rbf']
+  GradientBoostingClassifier:
+    classifier__n_estimators: [100, 200]
+    classifier__max_depth: [3, 5]
+# ==== slow or more hyperparameters used ====
+classification_hyperparameters_slow:
+  LogisticRegression:
+    classifier__C: [0.01, 0.1, 1.0, 10.0]
+  KNeighborsClassifier:
+    classifier__n_neighbors: [3, 5, 7]
+  RandomForestClassifier:
+    classifier__n_estimators: [100, 200, 300]
+    classifier__max_depth: [null, 10, 20]
+  SVC:
+    classifier__C: [0.1, 1.0, 10.0]
+    classifier__kernel: ['linear', 'rbf', 'poly']
+  GradientBoostingClassifier:
+    classifier__n_estimators: [100, 200, 300]
+    classifier__max_depth: [3, 5, 10]
+
+
