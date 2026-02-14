@@ -1,7 +1,5 @@
 Toh Meng Seng
 
-jimtoh@live.com
-
 # 20-toh-meng-seng-224E
 
 Batch 20 Technical Assessment
